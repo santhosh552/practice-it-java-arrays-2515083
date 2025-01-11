@@ -1,9 +1,52 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class App {
   
-  public static Integer findSecondSmallestItem(Integer[] arr) {
-    return 0;
+  public static Integer findSecondSmallestItem2(Integer[] arr) {
+    
+    if (arr.length <=1)
+     return null;
+
+    Arrays.sort(arr);
+
+    for(int i = 0; i < arr.length - 1; i++)
+    {
+      if (arr[i] != arr[i+1])
+      {
+        return arr[i+1];
+      }
+    }
+
+    return null;
+    
+    //return 0;
   }
     
+  public static Integer findSecondSmallestItem(Integer[] arr) {
+    int smallest = Integer.MAX_VALUE;
+    int secondSmallest = Integer.MAX_VALUE;
+
+    for (int i=0; i < arr.length; i++)
+    {
+      if (arr[i] < smallest)
+      {
+        secondSmallest = smallest;
+        smallest = arr[i];
+      }
+      else if(arr[i] < secondSmallest && arr[i] != smallest)
+      {
+        secondSmallest = arr[i];
+      }
+    }
+
+    if (secondSmallest == Integer.MAX_VALUE)
+     return null;
+     
+    return secondSmallest;
+
+  }
+
   public static void main(String args[]) {
     Integer[] arr = new Integer[]{ 5, 8, 3, 2, 6 };
     System.out.println(findSecondSmallestItem(arr));

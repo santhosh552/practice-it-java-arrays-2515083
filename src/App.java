@@ -3,6 +3,17 @@ import java.util.Arrays;
 public class App {
     
   public static void reverse(int[] arr) {
+
+    if (arr.length<=1)
+     return;
+
+    for (int i=0,j=(arr.length-1); i < arr.length/2;i++,j-- )
+    { 
+      int temp = 0;
+      temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
     
   }
   
